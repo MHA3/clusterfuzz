@@ -53,11 +53,7 @@ def _get_config_dict(url):
   url_data = storage.read_data(url)
   if not url_data:
     raise BuildOverrideError(OVERRIDE_CONFIG_NOT_READ_ERROR)
-  try:
-    config_dict = json.loads(url_data)
-  except ValueError:
-    raise BuildOverrideError(OVERRIDE_CONFIG_NOT_JSON_ERROR)
-  return config_dict
+  return json.loads(url_data)
 
 
 def _get_path_from_config(config_dict, config_key, platform_id):
